@@ -3,6 +3,8 @@ import './App.css';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import { getUsersSavedTracks } from './lib/spotify/api/tracks/tracks';
+import { GetUsersSavedTracksParams } from './lib/spotify/model';
 
 const apiToken = 'BQBeHcBEer2BbO_nXOODV6fWGxIa_QH6g9vMmTZdAavfFFNrLVgUyFq7hW-3TKO7LyRfAc1WplnaStIYl52QgrnPnmfV2cYBU69pBd4eafftixAjjT5WJuEHld4FqdrP_D1qdbL5lZtPDPl0O0B1AUDAe4ItQ-IO8VjPyT1dwP5YrWxKSzlK_ZNr7xvprKrHhz4tzfnQ4ElH4bXYpulygBljNp00mAIuY-_JY5T8YjOoUkszMt16E8myOCyNpFz7Svb9nVJqiZDzJkt0lOtgD1yQbOWNCxIYnleGXTo9aTprVQKYrltW2PRwNFgX3cfJ_5iQ';
 
@@ -80,7 +82,17 @@ const App = () => {
     data: tracks,
     isSuccess,
     isLoading,
-  } = useQuery({ queryKey: ['tracks'], queryFn: fetchTracks });
+  } = useQuery({
+    queryKey: ['tracks'],
+    queryFn: async () => {
+      const params: GetUsersSavedTracksParams = { limit: 20 };
+      const response = await getUsersSavedTracks(
+        { limit: 20 },
+        { headers: { Authorization: `Bearer ${apiToken}` } }
+      );      
+      return response.data.items;
+    },
+  });
 
   const [currentTrack, setCurrentTrack] = useState<any | undefined>(undefined);
   const [trackChoices, setTrackChoices] = useState<any[]>([]);
