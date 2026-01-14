@@ -1,6 +1,5 @@
 import { mkdir, writeFile } from "fs/promises";
-
-import openapi from "../openapi.json" assert { type: 'json' };
+import { readFileSync } from "fs";
 
 const targetDirectory = "src/lib/spotify/model";
 
@@ -9,6 +8,7 @@ async function generateSpotifyClient() {
   console.log('Generating Spotify client from OpenApi spec file...\n')
   await mkdir(targetDirectory, { recursive: true }); // Generate target directory
 
+  const openapi = JSON.parse(readFileSync("./openapi.json", "utf8"));
   const schemas = openapi.components.schemas;
   const typesToGenerate = Object.keys(schemas);
 
