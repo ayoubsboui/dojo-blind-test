@@ -1,3 +1,5 @@
+import { ImageObject } from "./ImageObject";
+
 export type PlaylistObject = {
   collaborative?: boolean;
   description?: string;
@@ -5,7 +7,7 @@ export type PlaylistObject = {
   followers?: ;
   href?: string;
   id?: string;
-  images?: [];
+  images?: ImageObject[];
   name?: string;
   owner?: ;
   public?: boolean;

@@ -1,3 +1,5 @@
+import { ImageObject } from "./ImageObject";
+
 export type AlbumBase = {
   album_type: string;
   total_tracks: number;
@@ -5,7 +7,7 @@ export type AlbumBase = {
   external_urls: ;
   href: string;
   id: string;
-  images: [];
+  images: ImageObject[];
   name: string;
   release_date: string;
   release_date_precision: string;

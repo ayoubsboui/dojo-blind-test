@@ -1,5 +1,7 @@
+import { SimplifiedArtistObject } from "./SimplifiedArtistObject";
+
 export type SimplifiedTrackObject = {
-  artists?: [];
+  artists?: SimplifiedArtistObject[];
   available_markets?: string[];
   disc_number?: number;
   duration_ms?: number;

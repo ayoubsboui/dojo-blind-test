@@ -1,10 +1,12 @@
+import { ImageObject } from "./ImageObject";
+
 export type SimplifiedPlaylistObject = {
   collaborative?: boolean;
   description?: string;
   external_urls?: ;
   href?: string;
   id?: string;
-  images?: [];
+  images?: ImageObject[];
   name?: string;
   owner?: ;
   public?: boolean;

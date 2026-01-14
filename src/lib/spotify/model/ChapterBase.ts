@@ -1,3 +1,5 @@
+import { ImageObject } from "./ImageObject";
+
 export type ChapterBase = {
   audio_preview_url: string;
   available_markets?: string[];
@@ -9,7 +11,7 @@ export type ChapterBase = {
   external_urls: ;
   href: string;
   id: string;
-  images: [];
+  images: ImageObject[];
   is_playable: boolean;
   languages: string[];
   name: string;

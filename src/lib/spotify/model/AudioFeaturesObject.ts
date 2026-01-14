@@ -1,3 +1,9 @@
+import { Key } from "./Key";
+import { Loudness } from "./Loudness";
+import { Mode } from "./Mode";
+import { Tempo } from "./Tempo";
+import { TimeSignature } from "./TimeSignature";
+
 export type AudioFeaturesObject = {
   acousticness?: number;
   analysis_url?: string;
@@ -6,13 +12,13 @@ export type AudioFeaturesObject = {
   energy?: number;
   id?: string;
   instrumentalness?: number;
-  key?: ;
+  key?: Key;
   liveness?: number;
-  loudness?: ;
-  mode?: ;
+  loudness?: Loudness;
+  mode?: Mode;
   speechiness?: number;
-  tempo?: ;
-  time_signature?: ;
+  tempo?: Tempo;
+  time_signature?: TimeSignature;
   track_href?: string;
   type?: string;
   uri?: string;

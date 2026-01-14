@@ -20,19 +20,33 @@ async function generateSpotifyClient() {
 
 function generateType(typeName, typeSchema) {  
   console.log(`Generating type ${typeName}...`);
+  const imports = new Set();
+  const generatedCode = getGeneratedCode(typeName, typeSchema, imports);
 
-  const generatedCode = getGeneratedCode(typeName, typeSchema);
+  const importBlock = Array.from(imports)
+    .map(dep => `import { ${dep} } from "./${dep}";`)
+    .join('\n');
 
-  writeFile(`${targetDirectory}/${typeName}.ts`, generatedCode);
+  const fileContent = (importBlock ? importBlock + '\n\n' : '') + generatedCode;
+
+  writeFile(`${targetDirectory}/${typeName}.ts`, fileContent);
 }
 
-function getGeneratedCode(typeName, typeSchema) {
-  const generatedType = getGeneratedType(typeSchema);
-
+function getGeneratedCode(typeName, typeSchema, imports) {
+  const generatedType = getGeneratedType(typeSchema, imports);
   return `export type ${typeName} = ${generatedType};`;
 }
 
-function getGeneratedType(typeSchema) {
+function getGeneratedType(typeSchema, imports) {
+  if (typeSchema.$ref) {
+    const refType = typeSchema.$ref.split('/').pop();
+    if (refType) {
+      imports.add(refType);
+      return refType;
+    }
+    return "any";
+  }
+
   const schemaType = typeSchema.type;
 
   switch (schemaType) {
@@ -45,7 +59,7 @@ function getGeneratedType(typeSchema) {
       return "boolean";
     case "array":
       if (typeSchema.items) {
-        const itemType = getGeneratedType(typeSchema.items);
+        const itemType = getGeneratedType(typeSchema.items, imports);
         return `${itemType}[]`;
       }
       return "any[]";
@@ -54,7 +68,7 @@ function getGeneratedType(typeSchema) {
         const required = typeSchema.required || [];
         const props = Object.entries(typeSchema.properties)
           .map(([propName, propSchema]) => {
-            const tsType = getGeneratedType(propSchema);
+            const tsType = getGeneratedType(propSchema, imports);
             const isRequired = required.includes(propName);
             return `  ${propName}${isRequired ? '' : '?'}: ${tsType};`;
           })

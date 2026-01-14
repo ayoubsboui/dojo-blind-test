@@ -1,7 +1,12 @@
+import { AuthorObject } from "./AuthorObject";
+import { CopyrightObject } from "./CopyrightObject";
+import { ImageObject } from "./ImageObject";
+import { NarratorObject } from "./NarratorObject";
+
 export type AudiobookBase = {
-  authors: [];
+  authors: AuthorObject[];
   available_markets: string[];
-  copyrights: [];
+  copyrights: CopyrightObject[];
   description: string;
   html_description: string;
   edition?: string;
@@ -9,11 +14,11 @@ export type AudiobookBase = {
   external_urls: ;
   href: string;
   id: string;
-  images: [];
+  images: ImageObject[];
   languages: string[];
   media_type: string;
   name: string;
-  narrators: [];
+  narrators: NarratorObject[];
   publisher: string;
   type: string;
   uri: string;

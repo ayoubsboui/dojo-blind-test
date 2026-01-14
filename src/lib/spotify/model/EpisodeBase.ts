@@ -1,3 +1,5 @@
+import { ImageObject } from "./ImageObject";
+
 export type EpisodeBase = {
   audio_preview_url: string;
   description: string;
@@ -7,7 +9,7 @@ export type EpisodeBase = {
   external_urls: ;
   href: string;
   id: string;
-  images: [];
+  images: ImageObject[];
   is_externally_hosted: boolean;
   is_playable: boolean;
   language?: string;

@@ -1,3 +1,5 @@
+import { TimeSignature } from "./TimeSignature";
+
 export type SectionObject = {
   start?: number;
   duration?: number;
@@ -9,6 +11,6 @@ export type SectionObject = {
   key_confidence?: number;
   mode?: number;
   mode_confidence?: number;
-  time_signature?: ;
+  time_signature?: TimeSignature;
   time_signature_confidence?: number;
 };
