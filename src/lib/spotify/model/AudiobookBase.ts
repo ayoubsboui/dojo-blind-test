@@ -20,7 +20,7 @@ export type AudiobookBase = {
   name: string;
   narrators: NarratorObject[];
   publisher: string;
-  type: string;
+  type: "audiobook";
   uri: string;
   total_chapters: number;
 };

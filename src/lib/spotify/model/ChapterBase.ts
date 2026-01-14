@@ -18,7 +18,7 @@ export type ChapterBase = {
   release_date: string;
   release_date_precision: string;
   resume_point: ;
-  type: string;
+  type: "episode";
   uri: string;
   restrictions?: ;
 };

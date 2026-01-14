@@ -3,6 +3,6 @@ export type SimplifiedArtistObject = {
   href?: string;
   id?: string;
   name?: string;
-  type?: string;
+  type?: "artist";
   uri?: string;
 };

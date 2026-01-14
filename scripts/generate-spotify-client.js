@@ -54,6 +54,9 @@ function getGeneratedType(typeSchema, imports) {
     case "integer":
       return "number";
     case "string":
+      if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
+        return `"${typeSchema.enum[0]}"`;
+      }
       return "string";
     case "boolean":
       return "boolean";

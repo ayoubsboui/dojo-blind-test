@@ -7,6 +7,6 @@ export type PublicUserObject = {
   href?: string;
   id?: string;
   images?: ImageObject[];
-  type?: string;
+  type?: "user";
   uri?: string;
 };

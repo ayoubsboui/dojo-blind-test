@@ -20,7 +20,7 @@ export type AudioFeaturesObject = {
   tempo?: Tempo;
   time_signature?: TimeSignature;
   track_href?: string;
-  type?: string;
+  type?: "audio_features";
   uri?: string;
   valence?: number;
 };

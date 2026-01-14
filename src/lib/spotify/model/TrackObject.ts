@@ -18,7 +18,7 @@ export type TrackObject = {
   popularity?: number;
   preview_url?: string;
   track_number?: number;
-  type?: string;
+  type?: "track";
   uri?: string;
   is_local?: boolean;
 };
