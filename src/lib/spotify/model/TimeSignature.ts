@@ -1,1 +1,1 @@
-export type TimeSignature = ;
+export type TimeSignature = number;

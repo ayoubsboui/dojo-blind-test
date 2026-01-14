@@ -35,12 +35,14 @@ function getGeneratedCode(typeName, typeSchema) {
 function getGeneratedType(typeSchema) {
   const schemaType = typeSchema.type;
 
-  // TO DO: Generate typescript code from schema
   switch (schemaType) {
     case "number":
     case "integer":
+      return "number";
     case "string":
+      return "string";
     case "boolean":
+      return "boolean";
     case "array":
     case "object":
     default:

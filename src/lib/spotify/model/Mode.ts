@@ -1,1 +1,1 @@
-export type Mode = ;
+export type Mode = number;

@@ -1,1 +1,1 @@
-export type Loudness = ;
+export type Loudness = number;

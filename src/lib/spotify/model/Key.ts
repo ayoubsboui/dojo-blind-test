@@ -1,1 +1,1 @@
-export type Key = ;
+export type Key = number;
