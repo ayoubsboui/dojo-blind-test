@@ -1,5 +1,6 @@
 import { AuthorObject } from "./AuthorObject";
 import { CopyrightObject } from "./CopyrightObject";
+import { ExternalUrlObject } from "./ExternalUrlObject";
 import { ImageObject } from "./ImageObject";
 import { NarratorObject } from "./NarratorObject";
 
@@ -11,7 +12,7 @@ export type AudiobookBase = {
   html_description: string;
   edition?: string;
   explicit: boolean;
-  external_urls: ;
+  external_urls: ExternalUrlObject;
   href: string;
   id: string;
   images: ImageObject[];

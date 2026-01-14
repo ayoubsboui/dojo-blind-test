@@ -1,4 +1,7 @@
+import { ExternalUrlObject } from "./ExternalUrlObject";
 import { ImageObject } from "./ImageObject";
+import { ResumePointObject } from "./ResumePointObject";
+import { EpisodeRestrictionObject } from "./EpisodeRestrictionObject";
 
 export type EpisodeBase = {
   audio_preview_url: string;
@@ -6,7 +9,7 @@ export type EpisodeBase = {
   html_description: string;
   duration_ms: number;
   explicit: boolean;
-  external_urls: ;
+  external_urls: ExternalUrlObject;
   href: string;
   id: string;
   images: ImageObject[];
@@ -17,8 +20,8 @@ export type EpisodeBase = {
   name: string;
   release_date: string;
   release_date_precision: string;
-  resume_point: ;
+  resume_point: ResumePointObject;
   type: "episode";
   uri: string;
-  restrictions?: ;
+  restrictions?: EpisodeRestrictionObject;
 };

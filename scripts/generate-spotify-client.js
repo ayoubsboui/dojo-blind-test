@@ -4,11 +4,11 @@ import { readFileSync } from "fs";
 const targetDirectory = "src/lib/spotify/model";
 
 async function generateSpotifyClient() {
-  console.log("\nLaunched generate-spotify-client script");
+console.log("\nLaunched generate-spotify-client script");
   console.log('Generating Spotify client from OpenApi spec file...\n')
   await mkdir(targetDirectory, { recursive: true }); // Generate target directory
 
-  const openapi = JSON.parse(readFileSync("./openapi.json", "utf8"));
+const openapi = JSON.parse(readFileSync("./openapi.json", "utf8"));
   const schemas = openapi.components.schemas;
   const typesToGenerate = Object.keys(schemas);
 
@@ -23,7 +23,7 @@ function generateType(typeName, typeSchema) {
   const imports = new Set();
   const generatedCode = getGeneratedCode(typeName, typeSchema, imports);
 
-  const importBlock = Array.from(imports)
+const importBlock = Array.from(imports)
     .map(dep => `import { ${dep} } from "./${dep}";`)
     .join('\n');
 
@@ -34,17 +34,19 @@ function generateType(typeName, typeSchema) {
 
 function getGeneratedCode(typeName, typeSchema, imports) {
   const generatedType = getGeneratedType(typeSchema, imports);
-  return `export type ${typeName} = ${generatedType};`;
+return `export type ${typeName} = ${generatedType};`;
 }
 
-function getGeneratedType(typeSchema, imports) {
+function getGeneratedType(typeSchema, imports, depth = 0) {
+  if (typeSchema.allOf) {
+    const types = typeSchema.allOf.map(subSchema => getGeneratedType(subSchema, imports, depth + 1));
+    return types.join(' & ');
+  }
+
   if (typeSchema.$ref) {
-    const refType = typeSchema.$ref.split('/').pop();
-    if (refType) {
-      imports.add(refType);
-      return refType;
-    }
-    return "any";
+    const refType = typeSchema.$ref.split("/").pop();
+    imports.add(refType);
+    return refType;
   }
 
   const schemaType = typeSchema.type;
@@ -54,33 +56,35 @@ function getGeneratedType(typeSchema, imports) {
     case "integer":
       return "number";
     case "string":
-      if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
+if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
         return `"${typeSchema.enum[0]}"`;
       }
       return "string";
     case "boolean":
       return "boolean";
-    case "array":
-      if (typeSchema.items) {
-        const itemType = getGeneratedType(typeSchema.items, imports);
-        return `${itemType}[]`;
-      }
-      return "any[]";
-    case "object":
-      if (typeSchema.properties) {
-        const required = typeSchema.required || [];
-        const props = Object.entries(typeSchema.properties)
-          .map(([propName, propSchema]) => {
-            const tsType = getGeneratedType(propSchema, imports);
-            const isRequired = required.includes(propName);
-            return `  ${propName}${isRequired ? '' : '?'}: ${tsType};`;
-          })
-          .join('\n');
-        return `{\n${props}\n}`;
-      }
+    case "array": {
+      if (!typeSchema.items) return "unknown[]";
+      const itemType = getGeneratedType(typeSchema.items, imports, depth + 1);
+      return `${itemType}[]`;
+    }
+    case "object": {
+      if (!typeSchema.properties) return "Record<string, unknown>";
+
+      const requiredFields = typeSchema.required ?? [];
+
+      const properties = Object.entries(typeSchema.properties)
+        .map(([propertyName, propertySchema]) => {
+          const propertyType = getGeneratedType(propertySchema, imports, depth + 1);
+          const isRequired = requiredFields.includes(propertyName);
+          const optionalMark = isRequired ? "" : "?";
+          return `  ${propertyName}${optionalMark}: ${propertyType};`;
+        })
+        .join("\n");
+      return `{\n${properties}\n}`;
+    }
       return "{}";
     default:
-      return "";
+      return "unknown";
   }
 }
 

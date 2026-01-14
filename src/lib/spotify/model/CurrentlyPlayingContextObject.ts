@@ -1,12 +1,16 @@
+import { DeviceObject } from "./DeviceObject";
+import { ContextObject } from "./ContextObject";
+import { DisallowsObject } from "./DisallowsObject";
+
 export type CurrentlyPlayingContextObject = {
-  device?: ;
+  device?: DeviceObject;
   repeat_state?: string;
   shuffle_state?: boolean;
-  context?: ;
+  context?: ContextObject;
   timestamp?: number;
   progress_ms?: number;
   is_playing?: boolean;
-  item?: ;
+  item?: unknown;
   currently_playing_type?: string;
-  actions?: ;
+  actions?: DisallowsObject;
 };

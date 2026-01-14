@@ -1,4 +1,7 @@
+import { ExternalUrlObject } from "./ExternalUrlObject";
 import { ImageObject } from "./ImageObject";
+import { ResumePointObject } from "./ResumePointObject";
+import { ChapterRestrictionObject } from "./ChapterRestrictionObject";
 
 export type ChapterBase = {
   audio_preview_url: string;
@@ -8,7 +11,7 @@ export type ChapterBase = {
   html_description: string;
   duration_ms: number;
   explicit: boolean;
-  external_urls: ;
+  external_urls: ExternalUrlObject;
   href: string;
   id: string;
   images: ImageObject[];
@@ -17,8 +20,8 @@ export type ChapterBase = {
   name: string;
   release_date: string;
   release_date_precision: string;
-  resume_point: ;
+  resume_point: ResumePointObject;
   type: "episode";
   uri: string;
-  restrictions?: ;
+  restrictions?: ChapterRestrictionObject;
 };

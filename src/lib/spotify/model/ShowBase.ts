@@ -1,4 +1,5 @@
 import { CopyrightObject } from "./CopyrightObject";
+import { ExternalUrlObject } from "./ExternalUrlObject";
 import { ImageObject } from "./ImageObject";
 
 export type ShowBase = {
@@ -7,7 +8,7 @@ export type ShowBase = {
   description: string;
   html_description: string;
   explicit: boolean;
-  external_urls: ;
+  external_urls: ExternalUrlObject;
   href: string;
   id: string;
   images: ImageObject[];
