@@ -1,4 +1,6 @@
 import { ContextObject } from "./ContextObject";
+import { TrackObject } from "./TrackObject";
+import { EpisodeObject } from "./EpisodeObject";
 import { DisallowsObject } from "./DisallowsObject";
 
 export type CurrentlyPlayingObject = {
@@ -6,7 +8,7 @@ export type CurrentlyPlayingObject = {
   timestamp?: number;
   progress_ms?: number;
   is_playing?: boolean;
-  item?: unknown;
+  item?: (TrackObject | EpisodeObject);
   currently_playing_type?: string;
   actions?: DisallowsObject;
 };

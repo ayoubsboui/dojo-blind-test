@@ -43,6 +43,13 @@ function getGeneratedType(typeSchema, imports, depth = 0) {
     return types.join(' & ');
   }
 
+  if (typeSchema.oneOf) {
+    const types = typeSchema.oneOf.map(subSchema => getGeneratedType(subSchema, imports, depth + 1));
+    // Remove duplicates and falsy values
+    const uniqueTypes = Array.from(new Set(types.filter(Boolean)));
+    return uniqueTypes.length > 1 ? `(${uniqueTypes.join(' | ')})` : uniqueTypes[0] || "unknown";
+  }
+
   if (typeSchema.$ref) {
     const refType = typeSchema.$ref.split("/").pop();
     imports.add(refType);
@@ -56,7 +63,7 @@ function getGeneratedType(typeSchema, imports, depth = 0) {
     case "integer":
       return "number";
     case "string":
-if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
+      if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
         return `"${typeSchema.enum[0]}"`;
       }
       return "string";
@@ -64,6 +71,12 @@ if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
       return "boolean";
     case "array": {
       if (!typeSchema.items) return "unknown[]";
+      if (typeSchema.items.oneOf) {
+        const types = typeSchema.items.oneOf.map(subSchema => getGeneratedType(subSchema, imports, depth + 1));
+        const uniqueTypes = Array.from(new Set(types.filter(Boolean)));
+        const unionType = uniqueTypes.length > 1 ? `(${uniqueTypes.join(' | ')})` : uniqueTypes[0] || "unknown";
+        return `${unionType}[]`;
+      }
       const itemType = getGeneratedType(typeSchema.items, imports, depth + 1);
       return `${itemType}[]`;
     }
@@ -82,7 +95,6 @@ if (Array.isArray(typeSchema.enum) && typeSchema.enum.length === 1) {
         .join("\n");
       return `{\n${properties}\n}`;
     }
-      return "{}";
     default:
       return "unknown";
   }
