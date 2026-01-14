@@ -40,12 +40,12 @@ return `export type ${typeName} = ${generatedType};`;
 function getGeneratedType(typeSchema, imports, depth = 0) {
   if (typeSchema.allOf) {
     const types = typeSchema.allOf.map(subSchema => getGeneratedType(subSchema, imports, depth + 1));
-    return types.join(' & ');
+    const filtered = types.filter(t => t && t !== "unknown" && t !== "{}");
+    return filtered.join(' & ');
   }
 
   if (typeSchema.oneOf) {
     const types = typeSchema.oneOf.map(subSchema => getGeneratedType(subSchema, imports, depth + 1));
-    // Remove duplicates and falsy values
     const uniqueTypes = Array.from(new Set(types.filter(Boolean)));
     return uniqueTypes.length > 1 ? `(${uniqueTypes.join(' | ')})` : uniqueTypes[0] || "unknown";
   }
