@@ -51,10 +51,12 @@ function getGeneratedType(typeSchema) {
       return "any[]";
     case "object":
       if (typeSchema.properties) {
+        const required = typeSchema.required || [];
         const props = Object.entries(typeSchema.properties)
           .map(([propName, propSchema]) => {
             const tsType = getGeneratedType(propSchema);
-            return `  ${propName}: ${tsType};`;
+            const isRequired = required.includes(propName);
+            return `  ${propName}${isRequired ? '' : '?'}: ${tsType};`;
           })
           .join('\n');
         return `{\n${props}\n}`;

@@ -1,3 +1,3 @@
 export type NarratorObject = {
-  name: string;
+  name?: string;
 };

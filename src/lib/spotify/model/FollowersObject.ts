@@ -1,4 +1,4 @@
 export type FollowersObject = {
-  href: string;
-  total: number;
+  href?: string;
+  total?: number;
 };

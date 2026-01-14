@@ -1,6 +1,6 @@
 export type ChapterBase = {
   audio_preview_url: string;
-  available_markets: string[];
+  available_markets?: string[];
   chapter_number: number;
   description: string;
   html_description: string;
@@ -18,5 +18,5 @@ export type ChapterBase = {
   resume_point: ;
   type: string;
   uri: string;
-  restrictions: ;
+  restrictions?: ;
 };

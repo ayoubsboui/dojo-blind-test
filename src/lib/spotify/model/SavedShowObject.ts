@@ -1,4 +1,4 @@
 export type SavedShowObject = {
-  added_at: string;
-  show: ;
+  added_at?: string;
+  show?: ;
 };

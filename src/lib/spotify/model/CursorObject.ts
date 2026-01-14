@@ -1,4 +1,4 @@
 export type CursorObject = {
-  after: string;
-  before: string;
+  after?: string;
+  before?: string;
 };

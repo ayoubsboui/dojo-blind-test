@@ -1,4 +1,4 @@
 export type QueueObject = {
-  currently_playing: ;
-  queue: [];
+  currently_playing?: ;
+  queue?: [];
 };

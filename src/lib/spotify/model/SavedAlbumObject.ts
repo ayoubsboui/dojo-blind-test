@@ -1,4 +1,4 @@
 export type SavedAlbumObject = {
-  added_at: string;
-  album: ;
+  added_at?: string;
+  album?: ;
 };

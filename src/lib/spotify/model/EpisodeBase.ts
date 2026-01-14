@@ -10,7 +10,7 @@ export type EpisodeBase = {
   images: [];
   is_externally_hosted: boolean;
   is_playable: boolean;
-  language: string;
+  language?: string;
   languages: string[];
   name: string;
   release_date: string;
@@ -18,5 +18,5 @@ export type EpisodeBase = {
   resume_point: ;
   type: string;
   uri: string;
-  restrictions: ;
+  restrictions?: ;
 };

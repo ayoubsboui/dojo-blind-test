@@ -1,3 +1,3 @@
 export type EpisodeRestrictionObject = {
-  reason: string;
+  reason?: string;
 };

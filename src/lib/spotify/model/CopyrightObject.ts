@@ -1,4 +1,4 @@
 export type CopyrightObject = {
-  text: string;
-  type: string;
+  text?: string;
+  type?: string;
 };

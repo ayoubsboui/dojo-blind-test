@@ -4,7 +4,7 @@ export type AudiobookBase = {
   copyrights: [];
   description: string;
   html_description: string;
-  edition: string;
+  edition?: string;
   explicit: boolean;
   external_urls: ;
   href: string;

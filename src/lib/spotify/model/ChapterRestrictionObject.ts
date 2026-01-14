@@ -1,3 +1,3 @@
 export type ChapterRestrictionObject = {
-  reason: string;
+  reason?: string;
 };

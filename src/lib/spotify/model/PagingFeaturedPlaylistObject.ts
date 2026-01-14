@@ -1,4 +1,4 @@
 export type PagingFeaturedPlaylistObject = {
-  message: string;
-  playlists: ;
+  message?: string;
+  playlists?: ;
 };

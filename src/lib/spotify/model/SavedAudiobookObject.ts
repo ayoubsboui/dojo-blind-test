@@ -1,4 +1,4 @@
 export type SavedAudiobookObject = {
-  added_at: string;
-  audiobook: ;
+  added_at?: string;
+  audiobook?: ;
 };

@@ -1,3 +1,3 @@
 export type AuthorObject = {
-  name: string;
+  name?: string;
 };

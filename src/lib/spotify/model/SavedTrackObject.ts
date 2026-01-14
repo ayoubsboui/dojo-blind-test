@@ -1,4 +1,4 @@
 export type SavedTrackObject = {
-  added_at: string;
-  track: ;
+  added_at?: string;
+  track?: ;
 };

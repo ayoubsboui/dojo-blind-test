@@ -1,4 +1,4 @@
 export type SavedEpisodeObject = {
-  added_at: string;
-  episode: ;
+  added_at?: string;
+  episode?: ;
 };

@@ -1,6 +1,6 @@
 export type ContextObject = {
-  type: string;
-  href: string;
-  external_urls: ;
-  uri: string;
+  type?: string;
+  href?: string;
+  external_urls?: ;
+  uri?: string;
 };

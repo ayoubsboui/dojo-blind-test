@@ -9,7 +9,7 @@ export type AlbumBase = {
   name: string;
   release_date: string;
   release_date_precision: string;
-  restrictions: ;
+  restrictions?: ;
   type: string;
   uri: string;
 };
