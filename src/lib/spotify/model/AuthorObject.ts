@@ -1,1 +1,3 @@
-export type AuthorObject = ;
+export type AuthorObject = {
+  name: string;
+};

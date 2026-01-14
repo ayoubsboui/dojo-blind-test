@@ -1,1 +1,1 @@
-export type PagingArtistObject = ;
+export type PagingArtistObject = {};

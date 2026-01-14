@@ -1,1 +1,44 @@
-export type AudioAnalysisObject = ;
+export type AudioAnalysisObject = {
+  meta: {
+  analyzer_version: string;
+  platform: string;
+  detailed_status: string;
+  status_code: number;
+  timestamp: number;
+  analysis_time: number;
+  input_process: string;
+};
+  track: {
+  num_samples: number;
+  duration: number;
+  sample_md5: string;
+  offset_seconds: number;
+  window_seconds: number;
+  analysis_sample_rate: number;
+  analysis_channels: number;
+  end_of_fade_in: number;
+  start_of_fade_out: number;
+  loudness: ;
+  tempo: ;
+  tempo_confidence: number;
+  time_signature: ;
+  time_signature_confidence: number;
+  key: ;
+  key_confidence: number;
+  mode: ;
+  mode_confidence: number;
+  codestring: string;
+  code_version: number;
+  echoprintstring: string;
+  echoprint_version: number;
+  synchstring: string;
+  synch_version: number;
+  rhythmstring: string;
+  rhythm_version: number;
+};
+  bars: [];
+  beats: [];
+  sections: [];
+  segments: [];
+  tatums: [];
+};

@@ -1,1 +1,4 @@
-export type ErrorObject = ;
+export type ErrorObject = {
+  status: number;
+  message: string;
+};

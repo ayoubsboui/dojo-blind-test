@@ -1,1 +1,21 @@
-export type AudiobookBase = ;
+export type AudiobookBase = {
+  authors: [];
+  available_markets: string[];
+  copyrights: [];
+  description: string;
+  html_description: string;
+  edition: string;
+  explicit: boolean;
+  external_urls: ;
+  href: string;
+  id: string;
+  images: [];
+  languages: string[];
+  media_type: string;
+  name: string;
+  narrators: [];
+  publisher: string;
+  type: string;
+  uri: string;
+  total_chapters: number;
+};

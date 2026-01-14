@@ -1,1 +1,3 @@
-export type ExternalUrlObject = ;
+export type ExternalUrlObject = {
+  spotify: string;
+};

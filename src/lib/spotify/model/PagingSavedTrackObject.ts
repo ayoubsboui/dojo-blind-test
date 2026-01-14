@@ -1,1 +1,1 @@
-export type PagingSavedTrackObject = ;
+export type PagingSavedTrackObject = {};

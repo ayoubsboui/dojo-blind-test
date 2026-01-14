@@ -1,1 +1,1 @@
-export type ChapterObject = ;
+export type ChapterObject = {};

@@ -1,1 +1,1 @@
-export type PagingSavedEpisodeObject = ;
+export type PagingSavedEpisodeObject = {};

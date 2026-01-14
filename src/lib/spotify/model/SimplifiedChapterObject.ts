@@ -1,1 +1,1 @@
-export type SimplifiedChapterObject = ;
+export type SimplifiedChapterObject = {};

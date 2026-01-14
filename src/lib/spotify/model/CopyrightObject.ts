@@ -1,1 +1,4 @@
-export type CopyrightObject = ;
+export type CopyrightObject = {
+  text: string;
+  type: string;
+};

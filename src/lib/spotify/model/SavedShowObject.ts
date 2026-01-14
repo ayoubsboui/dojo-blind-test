@@ -1,1 +1,4 @@
-export type SavedShowObject = ;
+export type SavedShowObject = {
+  added_at: string;
+  show: ;
+};

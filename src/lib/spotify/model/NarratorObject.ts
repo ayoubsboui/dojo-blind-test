@@ -1,1 +1,3 @@
-export type NarratorObject = ;
+export type NarratorObject = {
+  name: string;
+};

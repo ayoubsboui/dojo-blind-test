@@ -1,1 +1,1 @@
-export type PagingSimplifiedAudiobookObject = ;
+export type PagingSimplifiedAudiobookObject = {};

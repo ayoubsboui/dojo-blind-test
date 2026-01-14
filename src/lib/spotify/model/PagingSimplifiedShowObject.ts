@@ -1,1 +1,1 @@
-export type PagingSimplifiedShowObject = ;
+export type PagingSimplifiedShowObject = {};

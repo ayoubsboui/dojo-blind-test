@@ -44,7 +44,22 @@ function getGeneratedType(typeSchema) {
     case "boolean":
       return "boolean";
     case "array":
+      if (typeSchema.items) {
+        const itemType = getGeneratedType(typeSchema.items);
+        return `${itemType}[]`;
+      }
+      return "any[]";
     case "object":
+      if (typeSchema.properties) {
+        const props = Object.entries(typeSchema.properties)
+          .map(([propName, propSchema]) => {
+            const tsType = getGeneratedType(propSchema);
+            return `  ${propName}: ${tsType};`;
+          })
+          .join('\n');
+        return `{\n${props}\n}`;
+      }
+      return "{}";
     default:
       return "";
   }

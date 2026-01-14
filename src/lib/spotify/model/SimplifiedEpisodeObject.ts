@@ -1,1 +1,1 @@
-export type SimplifiedEpisodeObject = ;
+export type SimplifiedEpisodeObject = {};

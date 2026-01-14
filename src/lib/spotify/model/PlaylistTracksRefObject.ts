@@ -1,1 +1,4 @@
-export type PlaylistTracksRefObject = ;
+export type PlaylistTracksRefObject = {
+  href: string;
+  total: number;
+};

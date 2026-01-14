@@ -1,1 +1,4 @@
-export type FollowersObject = ;
+export type FollowersObject = {
+  href: string;
+  total: number;
+};

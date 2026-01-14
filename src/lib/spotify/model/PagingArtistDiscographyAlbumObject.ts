@@ -1,1 +1,1 @@
-export type PagingArtistDiscographyAlbumObject = ;
+export type PagingArtistDiscographyAlbumObject = {};

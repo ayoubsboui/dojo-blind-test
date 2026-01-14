@@ -1,1 +1,1 @@
-export type PagingSavedAlbumObject = ;
+export type PagingSavedAlbumObject = {};

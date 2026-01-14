@@ -1,1 +1,4 @@
-export type RecommendationsObject = ;
+export type RecommendationsObject = {
+  seeds: [];
+  tracks: [];
+};

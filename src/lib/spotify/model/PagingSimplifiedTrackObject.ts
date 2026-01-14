@@ -1,1 +1,1 @@
-export type PagingSimplifiedTrackObject = ;
+export type PagingSimplifiedTrackObject = {};

@@ -1,1 +1,4 @@
-export type CursorObject = ;
+export type CursorObject = {
+  after: string;
+  before: string;
+};

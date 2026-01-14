@@ -1,1 +1,3 @@
-export type AlbumRestrictionObject = ;
+export type AlbumRestrictionObject = {
+  reason: string;
+};

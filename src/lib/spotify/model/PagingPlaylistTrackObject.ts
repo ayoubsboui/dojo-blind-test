@@ -1,1 +1,1 @@
-export type PagingPlaylistTrackObject = ;
+export type PagingPlaylistTrackObject = {};

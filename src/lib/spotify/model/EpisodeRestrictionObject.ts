@@ -1,1 +1,3 @@
-export type EpisodeRestrictionObject = ;
+export type EpisodeRestrictionObject = {
+  reason: string;
+};

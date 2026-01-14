@@ -1,1 +1,4 @@
-export type QueueObject = ;
+export type QueueObject = {
+  currently_playing: ;
+  queue: [];
+};

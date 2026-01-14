@@ -1,1 +1,3 @@
-export type TrackRestrictionObject = ;
+export type TrackRestrictionObject = {
+  reason: string;
+};

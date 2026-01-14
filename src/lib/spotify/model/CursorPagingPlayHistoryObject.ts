@@ -1,1 +1,1 @@
-export type CursorPagingPlayHistoryObject = ;
+export type CursorPagingPlayHistoryObject = {};

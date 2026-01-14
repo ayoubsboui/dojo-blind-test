@@ -1,1 +1,1 @@
-export type PagingSimplifiedChapterObject = ;
+export type PagingSimplifiedChapterObject = {};
